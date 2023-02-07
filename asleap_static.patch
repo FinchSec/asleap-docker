@@ -1,0 +1,16 @@
+diff -ur asleap/Makefile asleap-static/Makefile
+--- asleap/Makefile	2022-10-11 19:00:49.971937105 +0000
++++ asleap-static/Makefile	2022-10-11 20:01:52.174669088 +0000
+@@ -8,9 +8,9 @@
+ # <dragorn> make is a twisted beast
+ ##################################
+ LDLIBS		= -lpcap -lxcrypt
+-CFLAGS		= -pipe -Wall -D_LINUX -D_OPENSSL_MD4
+-LDLIBS		+= -lcrypto
+-CFLAGS		+= -g3 #-ggdb -g
++CFLAGS		= -pipe -Wall -D_LINUX -D_OPENSSL_MD4 -static
++LDLIBS		+= -lcrypto -lpthread
++#CFLAGS		+= -g3 #-ggdb -g
+ PROGOBJ		= asleap.o genkeys.o utils.o common.o sha1.o
+ PROG		= asleap genkeys
+ #CC		    = clang-10
