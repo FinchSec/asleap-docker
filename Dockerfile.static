@@ -19,5 +19,6 @@ RUN file asleap | grep statically | grep ', stripped' && \
 
 # Stage 2
 FROM scratch
+LABEL org.opencontainers.image.authors="thomas@finchsec.com"
 COPY --from=builder /asleap/asleap /usr/bin/asleap
 COPY --from=builder /asleap/genkeys /usr/bin/genkeys

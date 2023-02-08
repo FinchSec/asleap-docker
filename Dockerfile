@@ -17,6 +17,7 @@ RUN file asleap | grep dynamically | grep ', stripped' && \
 
 # Stage 2
 FROM ubuntu:18.04
+LABEL org.opencontainers.image.authors="thomas@finchsec.com"
 RUN apt update && \
 	apt dist-upgrade -y && \
 	apt install libxcrypt1 libssl1.1 libpcap0.8 -y --no-install-recommends && \
