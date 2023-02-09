@@ -1,7 +1,7 @@
 FROM ubuntu:18.04 as builder
-RUN apt update && \
-	apt dist-upgrade -y && \
-	apt install build-essential git libxcrypt-dev libssl-dev libpcap-dev file patch -y
+RUN apt-get update && \
+	apt-get dist-upgrade -y && \
+	apt-get install build-essential git libxcrypt-dev libssl-dev libpcap-dev file patch -y
 # TODO: Cache git clone - See https://stackoverflow.com/questions/55003297/how-to-get-git-clone-to-play-nice-with-docker-cache
 RUN git clone https://github.com/joswr1ght/asleap && \
 	cd asleap && \

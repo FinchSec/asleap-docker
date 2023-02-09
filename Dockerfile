@@ -1,7 +1,7 @@
 FROM ubuntu:18.04 as builder
-RUN apt update && \
-	apt dist-upgrade -y && \
-	apt install build-essential git libxcrypt-dev libssl-dev libpcap-dev file patch -y
+RUN apt-get update && \
+	apt-get dist-upgrade -y && \
+	apt-get install build-essential git libxcrypt-dev libssl-dev libpcap-dev file patch -y
 # TODO: Cache git clone - See https://stackoverflow.com/questions/55003297/how-to-get-git-clone-to-play-nice-with-docker-cache
 RUN git clone https://github.com/joswr1ght/asleap && \
 	cd asleap && \
@@ -18,10 +18,10 @@ RUN file asleap | grep dynamically | grep ', stripped' && \
 # Stage 2
 FROM ubuntu:18.04
 LABEL org.opencontainers.image.authors="thomas@finchsec.com"
-RUN apt update && \
-	apt dist-upgrade -y && \
-	apt install libxcrypt1 libssl1.1 libpcap0.8 -y --no-install-recommends && \
-	apt autoclean && \
+RUN apt-get update && \
+	apt-get dist-upgrade -y && \
+	apt-get install libxcrypt1 libssl1.1 libpcap0.8 -y --no-install-recommends && \
+	apt-get autoclean && \
 	rm -rf /var/lib/dpkg/status-old /var/lib/apt/lists/*
 COPY --from=builder /asleap/asleap /usr/bin/asleap
 COPY --from=builder /asleap/genkeys /usr/bin/genkeys
