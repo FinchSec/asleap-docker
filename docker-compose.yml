@@ -1,0 +1,5 @@
+services:
+    asleap:
+        stdin_open: true
+        tty: true
+        image: finchsec/asleap
